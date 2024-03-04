@@ -1,0 +1,76 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-solution-builder-redis
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: Redis
+    source:
+      repo: https://github.com/ayushmjain/terraform-google-solution-builder-redis.git
+    version: 0.0.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description:
+      tagline: Memorystore for Redis provides a fully-managed service that is powered by the Redis in-memory data store to build application caches.
+      detailed: This composition unit creates a managed redis instance of the version Redis 6.x with a memory size of 1GB.
+      preDeploy: To deploy this blueprint you must have an active billing account and billing permissions.
+    icon: assets/icon.png
+    costEstimate:
+      description: Blueprint cost details
+      url: https://cloud.google.com/products/calculator/#id=91f31d97-8470-4b79-a28e-2583b2be3f26
+  content:
+    documentation:
+      - title: Redis
+        url: https://cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview
+    clientLibraryDocumentationLink: https://cloud.google.com/memorystore/docs/redis/libraries
+    examples:
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: network_name
+        description: VPC network name where the Redis instance is created
+        varType: string
+        default: null
+        connections:
+        - compositionUnitID: compute-network
+          output: network_name
+      - name: project_id
+        description: GCP project ID where the Redis instance is created
+        varType: string
+        required: true
+      - name: redis_instance_name
+        description: Redis instance name
+        varType: string
+        required: true
+      - name: region
+        description: GCP region where the Redis instance is created
+        varType: string
+        required: true
+    outputs:
+      - name: redis_host
+      - name: redis_port
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/redis.admin
+    services:
+      - redis.googleapis.com
