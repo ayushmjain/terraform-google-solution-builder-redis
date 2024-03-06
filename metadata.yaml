@@ -50,7 +50,7 @@ spec:
         varType: string
         default: null
         connections:
-        - compositionUnitID: compute-network
+        - compositionUnitID: terraform-google-solution-builder-vpc-network
           output: network_name
       - name: project_id
         description: GCP project ID where the Redis instance is created
