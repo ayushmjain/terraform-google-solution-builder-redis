@@ -65,6 +65,7 @@ spec:
         varType: string
         required: true
     outputs:
+      - name: module_dependency
       - name: redis_host
       - name: redis_port
   requirements:

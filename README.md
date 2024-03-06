@@ -34,6 +34,7 @@ To deploy this blueprint you must have an active billing account and billing per
 
 | Name | Description |
 |------|-------------|
+| module\_dependency | n/a |
 | redis\_host | n/a |
 | redis\_port | n/a |
 

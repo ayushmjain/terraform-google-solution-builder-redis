@@ -21,3 +21,8 @@ output "redis_host" {
 output "redis_port" {
   value = google_redis_instance.main.port
 }
+
+output "module_dependency" {
+  value = {}
+  depends_on = [google_redis_instance.main]
+}
