@@ -37,41 +37,49 @@ spec:
       url: https://cloud.google.com/products/calculator/#id=91f31d97-8470-4b79-a28e-2583b2be3f26
   content:
     documentation:
-      - title: Redis
-        url: https://cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview
+    - title: Redis
+      url: https://cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview
     clientLibraryDocumentationLink: https://cloud.google.com/memorystore/docs/redis/libraries
     examples:
-      - name: simple_example
-        location: examples/simple_example
+    - name: simple_example
+      location: examples/simple_example
   interfaces:
     variables:
-      - name: network_name
-        description: VPC network name where the Redis instance is created
-        varType: string
-        default: null
-        connections:
-        - compositionUnitID: terraform-google-solution-builder-vpc-network
-          output: network_name
-      - name: project_id
-        description: GCP project ID where the Redis instance is created
-        varType: string
-        required: true
-      - name: redis_instance_name
-        description: Redis instance name
-        varType: string
-        required: true
-      - name: region
-        description: GCP region where the Redis instance is created
-        varType: string
-        required: true
+    - name: network_name
+      description: VPC network name where the Redis instance is created
+      varType: string
+      defaultValue: null
+      userInputVariable: true
+      connections:
+      - compositionUnitID: terraform-google-solution-builder-vpc-network
+        type: direct
+        output: network_name
+    - name: project_id
+      description: GCP project ID where the Redis instance is created
+      varType: string
+      required: true
+      userInputVariable: true
+    - name: redis_instance_name
+      description: Redis instance name
+      varType: string
+      required: true
+      userInputVariable: true
+    - name: region
+      description: GCP region where the Redis instance is created
+      varType: string
+      required: true
+      userInputVariable: true
     outputs:
-      - name: module_dependency
-      - name: redis_host
-      - name: redis_port
+    - name: module_dependency
+      solutionOutputVariable: false
+    - name: redis_host
+      solutionOutputVariable: true
+    - name: redis_port
+      solutionOutputVariable: true
   requirements:
     roles:
-      - level: Project
-        roles:
-          - roles/redis.admin
+    - level: Project
+      roles:
+      - roles/redis.admin
     services:
-      - redis.googleapis.com
+    - redis.googleapis.com
