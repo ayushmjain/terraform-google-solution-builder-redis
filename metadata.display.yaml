@@ -26,6 +26,12 @@ spec:
   ui:
     input:
       variables:
+        memory_size_gb:
+          name: memory_size_gb
+          title: Memory Size GB
+        redis_version:
+          name: redis_version
+          title: Redis Version
         network_name:
           name: network_name
           title: Network Name

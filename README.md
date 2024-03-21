@@ -25,9 +25,11 @@ To deploy this blueprint you must have an active billing account and billing per
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| memory\_size\_gb | Redis memory size in GiB | `string` | `1` | no |
 | network\_name | VPC network name where the Redis instance is created | `string` | `null` | no |
 | project\_id | GCP project ID where the Redis instance is created | `string` | n/a | yes |
 | redis\_instance\_name | Redis instance name | `string` | n/a | yes |
+| redis\_version | The version of Redis software | `string` | `"REDIS_6_X"` | no |
 | region | GCP region where the Redis instance is created | `string` | n/a | yes |
 
 ## Outputs
