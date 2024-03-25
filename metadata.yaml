@@ -87,12 +87,16 @@ spec:
       - REDIS_7_0
     outputs:
     - name: module_dependency
+      description: Dependency variable that can be used by other modules to depend on this module
       solutionOutputVariable: false
     - name: redis_host
+      description: Redis host
       solutionOutputVariable: true
     - name: redis_port
+      description: Redis port
       solutionOutputVariable: true
     - name: env_variables
+      description: Environment variables exposed by the Redis module that can be used by compute resources to connect to the redis instance
       solutionOutputVariable: false
   requirements:
     roles:
