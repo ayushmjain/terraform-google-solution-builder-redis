@@ -92,6 +92,8 @@ spec:
       solutionOutputVariable: true
     - name: redis_port
       solutionOutputVariable: true
+    - name: env_variables
+      solutionOutputVariable: false
   requirements:
     roles:
     - level: Project
